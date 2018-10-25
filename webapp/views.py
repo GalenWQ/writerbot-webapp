@@ -1,9 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import random
+
+sentences = []
 
 # Create your views here.
 def home(request):
     return render(request, 'webapp/home.html')
 
 def write(request):
-    return render(request, 'webapp/write.html')
+    prompt = generatePrompt()
+    if request.POST:
+        sentences.append(request.POST["text"])
+    elif request.GET.get("new"):
+        sentences.clear()
+    return render(request, 'webapp/write.html', context={"prompt": prompt, "sentences": sentences})
+
+def about(request):
+    return render(request, 'webapp/about.html')
+
+def generatePrompt():
+    topics = ["a hotheaded penguin", "a wizened chihuahua", "a murderous toucan",
+              "an exponentially multiplying swarm of beagles"]
+    curTopic = topics[random.randrange(0, len(topics))]
+    return "Write about " + curTopic

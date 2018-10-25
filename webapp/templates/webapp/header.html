@@ -5,30 +5,21 @@
     <title>WriterBot</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/cover.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/cover.css' %}">#}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body class="body">
-    <div class="container d-auto w-100 h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">WriterBot</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">About</a>
-            <a class="nav-link" href="#">Contact</a>
+    <div class="container">
+      <header>
+          <h3>WriterBot</h3>
+          <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
           </nav>
-        </div>
       </header>
 
       {% block content %}
       {% endblock %}
-
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>Cover template from <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-        </div>
-      </footer>
     </div>
 </body>
 </html>
