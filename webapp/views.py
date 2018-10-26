@@ -5,6 +5,7 @@ import random
 
 sentences = []
 editing = False
+prompt = ""
 
 # Create your views here.
 def home(request):
@@ -12,7 +13,11 @@ def home(request):
 
 def write(request):
     global editing
-    prompt = generatePrompt()
+    global prompt
+
+    if prompt == "":
+        prompt = generatePrompt()
+
     suggestion = ""
 
     if request.POST:
@@ -26,6 +31,7 @@ def write(request):
     elif request.GET.get("new"):
         sentences.clear()
         editing = False
+        prompt = generatePrompt()
 
     return render(request, 'webapp/write.html',
                   context={"prompt": prompt, "sentences": sentences, "suggestion": suggestion})
