@@ -3,10 +3,11 @@
 {% block content %}
 
     <h5>Prompt: {{ prompt }}</h5>
-    <p>Start writing here:</p>
+    <p>Start writing here: <br>
     {% for sentence in sentences %}
-        <p>{{ sentence }}</p>
+        <br>{{ sentence }}
     {% endfor %}
+    </p>
 
     <form method="post">
         {% csrf_token %}
